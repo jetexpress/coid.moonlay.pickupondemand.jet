@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundPrimary"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="coid.moonlay.pickupondemand.jet.activity.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <!-- Fragment Content Here -->
+    <FrameLayout
+        android:id="@+id/main_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/ll_no_internet_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/medium"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/colorWarning">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_error"
+            android:drawableStart="@drawable/ic_error"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="@dimen/text_size_medium_large"
+            android:text="Tidak ada koneksi internet"/>
+        <RelativeLayout
+            android:id="@+id/rl_no_internet_close_container"
+            android:layout_width="@dimen/larger"
+            android:layout_height="@dimen/larger">
+            <ImageView
+                android:id="@+id/img_no_internet_close"
+                android:layout_width="@dimen/medium"
+                android:layout_height="@dimen/medium"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginStart="@dimen/small"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_reject"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

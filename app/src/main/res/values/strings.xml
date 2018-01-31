@@ -1,0 +1,253 @@
+<resources>
+    <string name="app_name">JET Kurir</string>
+    <string name="content_authority" translatable="false">coid.moonlay.pickupondemand.jet.activity</string>
+    <string name="facebook_app_id" translatable="false">393785550983913</string>
+    <string name="google_sign_in_client_id" translatable="false">398385182877-ngiqorsfp2u3t7q1qrqtr7jrurjbhb3r.apps.googleusercontent.com</string>
+
+    <string name="navigation_drawer_open">Buka navigation drawer</string>
+    <string name="navigation_drawer_close">Tutup navigation drawer</string>
+
+    <string name="action_settings">Pengaturan</string>
+    <string name="action_notification">Notifikasi</string>
+
+    <!-- COMMON -->
+    <string name="loading">Memuat&#8230;</string>
+    <string name="no_data_available">Tidak ada data</string>
+    <string name="retry">Ulang</string>
+    <string name="required">Wajib diisi</string>
+    <string name="invalid_nominal">Nominal tidak valid</string>
+    <string name="logout">Logout</string>
+    <string name="success">Success</string>
+    <string name="currency">Rp.</string>
+    <string name="yes">YA</string>
+    <string name="ok">OK</string>
+    <string name="cancel">TIDAK</string>
+    <string name="save">Simpan</string>
+    <string name="finish">Selesai</string>
+    <string name="choose_image">Pilih Gambar</string>
+
+    <!-- AUTH -->
+    <string name="username">Email / JET ID</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="login_facebook">Login dengan Facebook</string>
+    <string name="register">Register</string>
+    <string name="register_now"><u><b>Daftar Sekarang</b></u></string>
+    <string name="forgot_your_login_details"><u>Lupa Password ?</u></string>
+    <string name="or">atau</string>
+    <string name="do_not_have_an_account">Belum buat akun?</string>
+    <string name="back_to_login"><u>KEMBALI KE LOGIN</u></string>
+    <string name="old_password">Password Lama</string>
+    <string name="new_password">Password Baru</string>
+    <string name="change_password">Ganti Password</string>
+    <string name="confirm_password">Konfirmasi Password</string>
+    <string name="old_password_required">Password lama wajib diisi</string>
+    <string name="new_password_required">Password baru wajib diisi</string>
+    <string name="confirm_password_required">Konfirmasi Password wajib diisi</string>
+    <string name="login_invalid_username_or_password">Username atau password tidak valid</string>
+    <string name="login_unauthorized">Kurir tidak terdaftar</string>
+
+    <!-- PERMISSION -->
+    <string name="permission_location_title">Akses Lokasi</string>
+    <string name="permission_location_message_info">Aplikasi ini memerlukan akses lokasi, aktifkan akses lokasi sekarang ?</string>
+    <string name="permission_camera_title">Akses Kamera</string>
+    <string name="permission_camera_message_info">Aplikasi ini memerlukan akses kamera, aktifkan akses kamera sekarang ?</string>
+
+    <!-- GPS -->
+    <string name="gps_activate_title">GPS tidak aktif</string>
+    <string name="gps_activate_confirmation_message">GPS tidak akftif, silakan mengaktifkan GPS terlebih dulu.</string>
+
+    <!-- UPDATE -->
+    <string name="update">Update</string>
+    <string name="update_information">Informasi</string>
+    <string name="update_now">Update Sekarang</string>
+
+    <!-- DASHBOARD -->
+    <string name="dashboard">Dashboard</string>
+    <string name="dashboard_has_trip_started">Anda mempunyai pengambilan barang yang sedang berjalan</string>
+    <string name="dashboard_go_online">GO ONLINE</string>
+    <string name="dashboard_go_offline">GO OFFLINE</string>
+    <string name="dashboard_online_message">Status : Online</string>
+    <string name="dashboard_offline_message">Status : Offline</string>
+    <string name="dashboard_online_confirmation">Online untuk menerima Pickup Order ?</string>
+    <string name="dashboard_offline_confirmation">Offline sekarang ? (Anda tidak dapat menerima Pickup Order saat Offline)</string>
+
+    <!-- NOTIFICATION -->
+    <string name="notification">Notifikasi</string>
+    <string name="notification_task_confirmation_title">Konfirmasi</string>
+    <string name="notification_task_confirmation_message">Terima task ini ?</string>
+    <string name="notification_task_time_left">Sisa waktu</string>
+    <string name="notification_task_time_unit_second">detik.</string>
+    <string name="notification_task_received">Task berhasil diterima</string>
+    <string name="notification_task_already_assigned">Task sudah diterima oleh kurir lain</string>
+
+    <!-- HELP -->
+    <string name="help">Bantuan</string>
+
+    <!-- TASK & HISTORY -->
+    <string name="task">Task</string>
+    <string name="task_list">Task List</string>
+    <string name="task_history">History</string>
+    <string name="task_type_pickup">Pickup</string>
+    <string name="task_type_delivery">Delivery</string>
+    <string name="task_type_label_pickup_number">PU#</string>
+    <string name="task_type_label_awb_number">WB#</string>
+    <string name="task_failed_delivery">Gagal Kirim</string>
+    <string name="task_name">Nama</string>
+    <string name="task_address">Alamat</string>
+    <string name="task_address_detail">Detail Alamat</string>
+    <string name="task_phone">Telepon</string>
+    <string name="task_choose_contact">Pilih Kontak</string>
+    <string name="task_cancel">Batal</string>
+    <string name="task_contact">Kontak</string>
+    <string name="task_navigation">Navigasi</string>
+    <string name="task_info_detail">Informasi</string>
+    <string name="task_payment_method">Pembayaran</string>
+    <string name="task_total_price_break_down_detail">Rincian Biaya Pengiriman</string>
+    <string name="task_delivery_fee">Ongkos Kirim</string>
+    <string name="task_item_value">Harga Barang</string>
+    <string name="task_total_price">Total</string>
+
+    <!-- PICKUP -->
+    <string name="pickup_detail_label">Pemesan</string>
+    <string name="pickup_name">Nama Pemesan</string>
+    <string name="pickup_pic">PIC</string>
+    <string name="pickup_address">Alamat Pickup</string>
+    <string name="pickup_sender_address">Alamat Pemesan</string>
+    <string name="pickup_address_detail">Detail Alamat Pickup</string>
+    <string name="pickup_sender_address_detail">Detail Alamat Pemesan</string>
+    <string name="pickup_phone_number">Telepon Pemesan</string>
+    <string name="pickup_weight">Berat Barang</string>
+    <string name="pickup_start_trip">Mulai Perjalanan</string>
+    <string name="pickup_has_trip_started_message">Hanya 1 perjalanan yang diperbolehkan</string>
+    <string name="pickup_create_waybill">Buat Waybill</string>
+    <string name="pickup_has_arrived">Sudah tiba di tujuan</string>
+    <string name="pickup_cancelled_by_customer">dibatalkan oleh pelanggan</string>
+    <string name="pickup_cancel_trip_title">BATAL</string>
+    <string name="pickup_cancel_trip_confirmation">Batalkan perjalanan ini ?</string>
+    <string name="pickup_reject_pickup_title">TOLAK</string>
+    <string name="pickup_reject_pickup_confirmation">Perjalanan untuk pickup ini belum dimulai, Tolak pickup ini ?</string>
+    <string name="pickup_reject">Tolak</string>
+    <string name="pickup_complete_with_incomplete_pickup_item_title">Pickup</string>
+    <string name="pickup_complete_with_incomplete_pickup_item_confirmation">Ada Pickup Item yang belum dikonfirmasi, Lanjutkan ?</string>
+    <string name="pickup_list_of_pickup_item">Nomor Booking</string>
+    <string name="pickup_take_item">Ambil Barang</string>
+
+    <!-- WAYBILL -->
+    <string name="waybill_sender_info">Informasi Pengirim</string>
+    <string name="waybill_sender_name">Nama Pengirim</string>
+    <string name="waybill_sender_address">Alamat Pengirim</string>
+    <string name="waybill_drop_shipper_info">Informasi Pengirim Tercetak</string>
+    <string name="waybill_drop_shipper_name">Nama Pengirim</string>
+    <string name="waybill_drop_shipper_address">Alamat Pengirim</string>
+    <string name="waybill_quick_pickup_item_count">Jumlah barang (dari Customer)</string>
+    <string name="waybill_actual_pickup_item_count">Jumlah barang (setelah dihitung Kurir)</string>
+    <string name="waybill_consignee_info">Informasi Penerima</string>
+    <string name="waybill_consignee_name">Nama Penerima</string>
+    <string name="waybill_consignee_address">Alamat Penerima</string>
+    <string name="waybill_consignee_location">Lokasi Penerima</string>
+    <string name="waybill_consignee_choose_location">Pilih Lokasi Penerima</string>
+    <string name="waybill_create_confirmation_message">Buat waybill untuk item ini ?</string>
+    <string name="waybill_unlock">Unlock</string>
+
+    <!-- PICKUP ITEM -->
+    <string name="pickup_item_unlock_code">UNLOCK CODE</string>
+    <string name="pickup_item_enter_last_four_digit">Masukkan 4 digit terakhir Unlock Code</string>
+    <string name="pickup_item_unlock_using_qr_code">Unlock Scan QR Code</string>
+    <string name="pickup_item_unlock_using_unlock_code">Unlock menggunakan Code Manual</string>
+    <string name="pickup_item_qr_code_info">Posisikan QR Code di dalam kotak yang tersedia</string>
+    <string name="pickup_item_invalid_qr_code">QR Code tidak valid</string>
+    <string name="pickup_item_invalid_unlock_code">Unlock Code tidak valid</string>
+    <string name="pickup_item_unlock_warning">Anda belum memasukkan nomor Pickup</string>
+    <string name="pickup_item_consignee_info">Informasi Penerima</string>
+    <string name="pickup_item_consignee_name">Nama Penerima</string>
+    <string name="pickup_item_consignee_address">Alamat Penerima</string>
+    <string name="pickup_item_consignee_address_detail">Detail Alamat Penerima</string>
+    <string name="pickup_item_detail">Informasi Detail Barang</string>
+    <string name="pickup_item_weight">Berat Barang (kg)</string>
+    <string name="pickup_item_dimension">Dimensi Barang (cm)</string>
+    <string name="pickup_item_length">Panjang</string>
+    <string name="pickup_item_width">Lebar</string>
+    <string name="pickup_item_height">Tinggi</string>
+    <string name="pickup_item_volume">Volume Barang</string>
+    <string name="pickup_item_estimated_price">Estimasi Harga</string>
+    <string name="pickup_item_view_detail">(Lihat Detail)</string>
+    <string name="pickup_item_delivery_fee">Biaya pengiriman</string>
+    <string name="pickup_item_packaging_fee">Biaya packaging</string>
+    <string name="pickup_item_insurance_fee">Biaya asuransi</string>
+    <string name="pickup_item_discount">Discount</string>
+    <string name="pickup_item_total">Total</string>
+    <string name="pickup_item_product">Jenis Pengiriman</string>
+    <string name="pickup_item_packaging">Packaging</string>
+    <string name="pickup_item_default_packaging">Tidak ada Packaging</string>
+    <string name="pickup_item_insurance">Asuransi?</string>
+    <string name="pickup_item_value">Nilai Barang</string>
+    <string name="pickup_item_description">Deskripsi Barang</string>
+
+    <!-- DELIVERY -->
+    <string name="delivery_detail_label">Penerima</string>
+    <string name="delivery_name">Nama Penerima</string>
+    <string name="delivery_pic">PIC</string>
+    <string name="delivery_address">Alamat Penerima</string>
+    <string name="delivery_address_detail">Detail Alamat Penerima</string>
+    <string name="delivery_phone_number">Telepon Penerima</string>
+    <string name="delivery_failed">GAGAL</string>
+    <string name="delivery_success">SUKSES</string>
+    <string name="delivery_choose_status">Pilih Status</string>
+    <string name="delivery_choose_relation">Pilih Relasi dengan penerima</string>
+    <string name="delivery_choose_failed_status">Pilih Status pengiriman</string>
+    <string name="delivery_failed_retry">Retry ?</string>
+    <string name="delivery_failed_detail_label">Detail Gagal Kirim</string>
+    <string name="delivery_failed_note">Note</string>
+    <string name="delivery_finish">Selesai</string>
+
+    <!-- PROOF OF DELIVERY -->
+    <string name="proof_of_delivery">Proof of Delivery</string>
+    <string name="proof_of_delivery_consignee_detail">Detail Penerima</string>
+    <string name="proof_of_delivery_relation_with_consignee">Relasi dengan penerima</string>
+    <string name="proof_of_delivery_photo">Foto Tanda Terima</string>
+    <string name="proof_of_delivery_signature">Tanda Tangan</string>
+    <string name="proof_of_delivery_signature_clear">Hapus</string>
+    <string name="proof_of_delivery_signature_save">Simpan</string>
+    <string name="proof_of_delivery_insert_photo">Masukkan foto barang yang anda kirim</string>
+    <string name="proof_of_delivery_note">Note</string>
+    <string name="proof_of_delivery_take_photo">Ambil Gambar</string>
+    <string name="proof_of_delivery_pick_photo">Pilih Gambar</string>
+    <string name="proof_of_delivery_photo_required">Foto wajib dilampirkan</string>
+    <string name="proof_of_delivery_signature_required">Tanda tangan wajib dilampirkan</string>
+
+    <!-- OUTLET LOCATION -->
+    <string name="outlet_location">Lokasi Gerai</string>
+
+    <!-- ERROR -->
+    <string name="request_timed_out">Koneksi terputus, silakan coba kembali</string>
+    <string name="estimated_price_request_timed_out">Koneksi terputus, gagal mendapatkan Estimasi Harga, Silakan coba lagi</string>
+    <string name="login_failed">Gagal login, silakan coba lagi</string>
+    <string name="login_facebook_failed">Gagal login Facebook, silakan coba lagi</string>
+    <string name="user_profile_get_failed">Gagal mendapatkan data user</string>
+    <string name="change_password_failed">Gagal ubah password, silakan coba lagi</string>
+    <string name="invalid_email_format">Format email tidak valid</string>
+    <string name="invalid_volume">Volume tidak valid</string>
+    <string name="confirm_password_not_match">Konfirmasi password tidak sesuai</string>
+    <string name="failed_to_go_online">Gagal Online, silakan coba lagi</string>
+    <string name="failed_to_go_offline">Gagal Offline, silakan coba lagi</string>
+    <string name="failed_to_get_direction">Gagal mendapatkan navigasi, silakan coba lagi</string>
+    <string name="failed_to_submit">Submit gagal, silakan coba lagi</string>
+    <string name="failed_to_start_trip">Gagal memulai perjalanan, silakan coba lagi</string>
+    <string name="failed_to_cancel_trip">Gagal membatalkan perjalanan, silakan coba lagi</string>
+    <string name="failed_to_unlock_pickup_item">Unlock code tidak sesuai, silakan coba lagi</string>
+    <string name="failed_to_unlock_pickup_item_using_qr_code">QR Code tidak sesuai, silakan coba lagi</string>
+    <string name="failed_to_create_waybill">Gagal buat waybill, silakan coba lagi</string>
+    <string name="failed_to_complete_pickup">Gagal menyelesaikan pickup, silakan coba lagi</string>
+    <string name="failed_to_connect_phone_call">Gagal terhubung, silakan coba kembali</string>
+    <string name="failed_to_sms">SMS gagal, silakan coba kembali</string>
+    <string name="failed_to_accept_task">Gagal menerima task</string>
+    <string name="failed_to_accept_task_request_timed_out">Gagal menerima task, Koneksi terputus</string>
+
+    <!-- DEV -->
+    <string name="dev_not_implemented">Not implemented</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

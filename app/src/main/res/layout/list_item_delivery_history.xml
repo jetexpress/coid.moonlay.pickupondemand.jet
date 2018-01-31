@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/colorPanelPrimary">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/medium"
+        android:paddingRight="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="@dimen/medium"
+        android:paddingLeft="@dimen/medium"
+        android:paddingStart="@dimen/medium"
+        android:src="@drawable/ic_delivery_white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/medium"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="WAYBILL NO - "/>
+            <TextView
+                android:id="@+id/tv_waybill_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/extra_small"
+                android:layout_marginStart="@dimen/extra_small"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="2033478695"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/extra_small"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium"
+                android:text="DRS NO - "/>
+            <TextView
+                android:id="@+id/tv_drs_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/extra_small"
+                android:layout_marginStart="@dimen/extra_small"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium"
+                android:text="2033478695"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/extra_small"
+            android:maxLines="1"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="@dimen/text_size_medium"
+            android:text="Equity Tower 25TH floor, SCBD lot 9, Jl. Jend. Sudirman kav.52 - 53"/>
+        <TextView
+            android:id="@+id/tv_operation_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/extra_small"
+            android:maxLines="1"
+            android:textColor="@color/colorInfo"
+            android:text="Alamat tidak lengkap / salah"/>
+    </LinearLayout>
+</LinearLayout>
