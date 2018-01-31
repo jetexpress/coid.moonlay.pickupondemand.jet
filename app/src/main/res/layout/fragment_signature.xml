@@ -1,0 +1,63 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:signature="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="coid.moonlay.pickupondemand.jet.fragment.SignatureFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/layout_small"
+        android:layout_marginBottom="@dimen/layout_small"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+        <com.github.gcacace.signaturepad.views.SignaturePad
+            android:id="@+id/signature_pad"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/colorBackgroundPrimary"/>
+
+        <LinearLayout
+            android:id="@+id/ll_buttons_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/medium"
+            android:paddingBottom="@dimen/medium"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:background="@drawable/custom_bg_rounded_square_black_fill"
+                android:textColor="@color/colorTextPrimary"
+                android:text="@string/proof_of_delivery_signature_clear"
+                android:enabled="false" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginStart="@dimen/small"
+                android:background="@drawable/custom_bg_rounded_square_red_fill"
+                android:textColor="@color/colorTextPrimary"
+                android:text="@string/proof_of_delivery_signature_save"
+                android:enabled="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

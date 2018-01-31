@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_nav_dashboard"
+            android:title="@string/dashboard"/>
+        <item
+            android:id="@+id/nav_task_list"
+            android:icon="@drawable/ic_nav_task"
+            android:title="@string/task_list"/>
+        <!-- ULETBE HIDE TUTORIAL-->
+        <!--<item-->
+            <!--android:id="@+id/nav_help"-->
+            <!--android:icon="@drawable/ic_nav_help"-->
+            <!--android:title="@string/help"/>-->
+        <!-- ULETBE HIDE TUTORIAL-->
+
+        <!--<item-->
+            <!--android:id="@+id/nav_proof"-->
+            <!--android:icon="@drawable/ic_username"-->
+            <!--android:title="@string/proof_of_delivery"/>-->
+        <!--<item-->
+            <!--android:id="@+id/nav_outlet_location"-->
+            <!--android:icon="@drawable/ic_username"-->
+            <!--android:title="@string/outlet_location"/>-->
+    </group>
+
+    <!--<item android:title="Group 1">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_5"-->
+                <!--android:icon="@drawable/ic_username"-->
+                <!--android:title="@string/hello_blank_fragment"/>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_6"-->
+                <!--android:icon="@drawable/ic_username"-->
+                <!--android:title="@string/hello_blank_fragment"/>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_7"-->
+                <!--android:icon="@drawable/ic_username"-->
+                <!--android:title="@string/hello_blank_fragment"/>-->
+        <!--</menu>-->
+    <!--</item>-->
+
+    <!--<item android:title="Group 2">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_8"-->
+                <!--android:icon="@drawable/ic_username"-->
+                <!--android:title="@string/hello_blank_fragment"/>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_9"-->
+                <!--android:icon="@drawable/ic_username"-->
+                <!--android:title="@string/hello_blank_fragment"/>-->
+        <!--</menu>-->
+    <!--</item>-->
+
+    <group android:id="@+id/group_logout"
+           android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_nav_logout"
+            android:title="@string/logout"/>
+    </group>
+
+</menu>
