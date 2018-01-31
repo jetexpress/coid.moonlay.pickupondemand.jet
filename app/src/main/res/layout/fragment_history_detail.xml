@@ -1,0 +1,233 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundPrimary"
+    tools:context="coid.moonlay.pickupondemand.jet.fragment.HistoryDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tv_task_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium_large"
+                    android:text="PICK NO 2033478695"/>
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="@color/colorTextSecondary"
+                    android:text="Picked up"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorTextPrimary"
+                android:text="Kamis, 15 September 2016 - 12.29"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mockup_img_history_map"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_medium"
+                android:text="Informasi Pengirim"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:textColor="@color/colorTextSecondary"
+                android:text="Nama pengirim"/>
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="Patricia Aviani"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:textColor="@color/colorTextSecondary"
+                android:text="Telepon pengirim"/>
+            <TextView
+                android:id="@+id/tv_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="0817 9818 1987"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:textColor="@color/colorTextSecondary"
+                android:text="Alamat pengirim"/>
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="Equity Tower 25TH floor, SCBD lot 9, \nJl. Jend. Sudirman kav.52 - 53, 12190"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextSecondary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_medium"
+                android:text="Informasi Barang"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:textColor="@color/colorTextSecondary"
+                android:text="Berat barang"/>
+            <TextView
+                android:id="@+id/tv_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="1 kg"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:textColor="@color/colorTextSecondary"
+                android:text="Dimensi Barang (cm)"/>
+            <TextView
+                android:id="@+id/tv_dimension"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="11 x 9 x 15 (p x l x t)"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:textColor="@color/colorTextSecondary"
+                android:text="Volume Barang"/>
+            <TextView
+                android:id="@+id/tv_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_medium_large"
+                android:text="1485 cm"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextSecondary"/>
+
+        <LinearLayout
+            android:id="@+id/ll_booking_number_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/medium"
+                android:paddingRight="@dimen/medium"
+                android:paddingLeft="@dimen/medium"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_medium"
+                android:text="Nomor Booking"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextSecondary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_medium"
+                android:text="Rincian Biaya Pengiriman"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_payment_method"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium_large"
+                    android:text="CASH ON DELIVERY"/>
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium_large"
+                    android:text="Rp 500.000"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

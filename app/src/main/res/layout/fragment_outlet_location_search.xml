@@ -1,0 +1,69 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundPrimary"
+    tools:context="coid.moonlay.pickupondemand.jet.fragment.OutletLocationSearchDialogFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_search_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/custom_bg_rounded_square_primary_fill">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium"
+            android:layout_marginStart="@dimen/medium"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_search_white"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/small"
+            android:paddingRight="@dimen/extra_large"
+            android:paddingBottom="@dimen/small"
+            android:paddingLeft="@dimen/extra_large"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAllCaps="true"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/text_size_small"
+                android:text="Lokasi Gerai Tujuan"/>
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="@color/colorTextPrimary"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ListView
+        android:id="@+id/list_view_outlet_location"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_search_container"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_not_found_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorTextPrimary"
+        android:text="Gerai tidak ditemukan"
+        android:visibility="gone"/>
+
+</RelativeLayout>
