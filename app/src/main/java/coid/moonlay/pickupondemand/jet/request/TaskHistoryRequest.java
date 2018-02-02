@@ -18,17 +18,19 @@ public class TaskHistoryRequest extends BaseNetworkRequest<QueryResult<Task>>
     private TaskFragment mTaskFragment;
     private Query mQuery;
     private Long mPage = 1L;
+    private String mFilterKeyword;
 
-    public TaskHistoryRequest(Context context)
+    public TaskHistoryRequest(Context context, String filterKeyword)
     {
         super(context);
+        mFilterKeyword = filterKeyword;
     }
 
     @Override
     protected Call<QueryResult<Task>> getCall()
     {
         mPage = mQuery != null ? mQuery.getPage() + 1 : 1;
-        return RetrofitProvider.getAuthorizedResourcesService().getHistoryTaskList(ApiConfig.DEFAULT_PAGING_SIZE, mPage);
+        return RetrofitProvider.getAuthorizedResourcesService().getHistoryTaskList(ApiConfig.DEFAULT_PAGING_SIZE, mPage, mFilterKeyword);
     }
 
     @Override
