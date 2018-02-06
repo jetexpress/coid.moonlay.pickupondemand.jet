@@ -18,17 +18,19 @@ public class TaskOngoingRequest extends BaseNetworkRequest<QueryResult<Task>>
     private TaskFragment mTaskFragment;
     private Query mQuery;
     private Long mPage = 1L;
+    private String mFilterKeyword;
 
-    public TaskOngoingRequest(Context context)
+    public TaskOngoingRequest(Context context, String filterKeyword)
     {
         super(context);
+        mFilterKeyword = filterKeyword;
     }
 
     @Override
     protected Call<QueryResult<Task>> getCall()
     {
         mPage = mQuery != null ? mQuery.getPage() + 1 : 1;
-        return RetrofitProvider.getAuthorizedResourcesService().getOngoingTaskList(ApiConfig.DEFAULT_PAGING_SIZE, mPage);
+        return RetrofitProvider.getAuthorizedResourcesService().getOngoingTaskList(ApiConfig.DEFAULT_PAGING_SIZE, mPage, mFilterKeyword);
     }
 
     @Override
