@@ -9,14 +9,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="@dimen/medium"
-        android:textColor="@color/colorTextPrimary"
-        android:text="TITLE 02"/>
+        android:textColor="@color/colorTextPrimary"/>
     <ImageView
         android:id="@+id/img_tutorial_02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_qr_code"/>
+        android:src="@drawable/tutor_notifikasi_pickup_request"
+        android:scaleType="fitXY"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
