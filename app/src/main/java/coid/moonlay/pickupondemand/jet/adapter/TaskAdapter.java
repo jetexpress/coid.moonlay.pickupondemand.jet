@@ -1,6 +1,11 @@
 package coid.moonlay.pickupondemand.jet.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +19,7 @@ import android.widget.TextView;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import coid.moonlay.pickupondemand.jet.R;
@@ -30,6 +36,7 @@ public class TaskAdapter extends ArrayAdapter<Task>
     private ISwipeRevealLayoutOnClickListener mSwipeRevealLayoutOnClickListener;
     private String mOpenItemId;
     private boolean mIsSwipeRevealDisabled = false;
+    private String mFilterKeyword;
 
     public TaskAdapter(Context context, List<Task> taskList, boolean isSwipeRevealDisabled)
     {
@@ -76,9 +83,23 @@ public class TaskAdapter extends ArrayAdapter<Task>
 
     public void setValue(ViewHolder holder, Task task)
     {
+        try
+        {
+            if (mFilterKeyword != null && !mFilterKeyword.isEmpty())
+            {
+                SpannableString spannableDescription = getColoredStringContainsFilterKey(task.getCode());
+                holder.tv_task_code.setText(spannableDescription);
+            }
+            else
+                holder.tv_task_code.setText(task.getCode());
+        }
+        catch (Exception ex)
+        {
+            Log.d("FILTER", "filter not found, " + ex.getMessage());
+        }
+
         holder.img_task_type.setImageDrawable(task.getTaskTypeDrawable());
         holder.tv_task_type_label.setText(task.getTaskTypeLabel());
-        holder.tv_task_code.setText(task.getCode());
         holder.tv_drs_code.setText(task.getDrsCode());
         holder.tv_address.setText(task.getAddress());
         holder.tv_payment_method.setText(task.getPaymentMethod());
@@ -180,6 +201,33 @@ public class TaskAdapter extends ArrayAdapter<Task>
         }
         addAll(taskList);
         notifyDataSetChanged();
+    }
+
+    public void updateFilteredList(String filterKeyword, List<Task> taskList, Boolean isReplace)
+    {
+        mFilterKeyword = filterKeyword;
+        update(taskList, isReplace);
+    }
+
+    private SpannableString getColoredStringContainsFilterKey(String text)
+    {
+        SpannableString coloredString = new SpannableString(text);
+        Integer searchIndex = 0;
+        List<Integer> startIndexList = new ArrayList<>();
+        while (searchIndex <= coloredString.length())
+        {
+            int startIndex = text.toLowerCase().indexOf(mFilterKeyword, searchIndex);
+            if (startIndex > -1) startIndexList.add(startIndex);
+            else break;
+            searchIndex = startIndex + 1;
+        }
+        for (Integer startIndex : startIndexList)
+        {
+            int endIndex = startIndex + mFilterKeyword.length();
+            coloredString.setSpan(new ForegroundColorSpan(Color.RED), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        return coloredString;
     }
 
     private class ViewHolder

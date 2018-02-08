@@ -11,18 +11,18 @@
         android:padding="@dimen/medium"
         android:textColor="@color/colorTextPrimary"/>
     <ImageView
-        android:id="@+id/img_tutorial_03"
+        android:id="@+id/img_tutorial_05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/tutor_status_pickup"
+        android:src="@drawable/tutor_create_waybill"
         android:scaleType="fitXY"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/medium"
-        android:layout_below="@id/img_tutorial_03"
+        android:layout_below="@id/img_tutorial_05"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorTextPrimary"
-        android:text="Content 03"/>
+        android:text="Content 05"/>
 </RelativeLayout>
