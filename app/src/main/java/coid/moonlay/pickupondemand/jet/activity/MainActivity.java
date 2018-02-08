@@ -101,11 +101,11 @@ public class MainActivity extends BaseActivity
             JetApplication.notificationReceivedHandler.setOnReceivedListener(this);
 
             /** ULETBE HIDE TUTORIAL */
-//            if (isFirstTimeOpened())
-//            {
-//                Intent tutorialIntent = new Intent(this, TutorialActivity.class);
-//                startActivity(tutorialIntent);
-//            }
+            if (isFirstTimeOpened())
+            {
+                Intent tutorialIntent = new Intent(this, TutorialActivity.class);
+                startActivity(tutorialIntent);
+            }
             /** ULETBE HIDE TUTORIAL */
 
 //            /** uletbe*/
@@ -230,11 +230,11 @@ public class MainActivity extends BaseActivity
             getNavigator().showFragment(new TaskFragment());
         }
         /** ULETBE HIDE TUTORIAL */
-//        else if (id == R.id.nav_help)
-//        {
-//            Intent tutorialIntent = new Intent(MainActivity.this, TutorialActivity.class);
-//            startActivity(tutorialIntent);
-//        }
+        else if (id == R.id.nav_help)
+        {
+            Intent tutorialIntent = new Intent(MainActivity.this, TutorialActivity.class);
+            startActivity(tutorialIntent);
+        }
         /** ULETBE HIDE TUTORIAL */
 
 //        else if (id == R.id.nav_proof)
@@ -373,11 +373,11 @@ public class MainActivity extends BaseActivity
     }
 
     /** ULETBE HIDE TUTORIAL */
-//    private Boolean isFirstTimeOpened()
-//    {
-//        SharedPreferences pref = getSharedPreferences(AppConfig.JET_SHARED_PREFERENCES, MODE_PRIVATE);
-//        return pref.getBoolean(AppConfig.FIRST_TIME_OPENED_PARAM_KEY, true);
-//    }
+    private Boolean isFirstTimeOpened()
+    {
+        SharedPreferences pref = getSharedPreferences(AppConfig.JET_SHARED_PREFERENCES, MODE_PRIVATE);
+        return pref.getBoolean(AppConfig.FIRST_TIME_OPENED_PARAM_KEY, true);
+    }
     /** ULETBE HIDE TUTORIAL */
 
     public void showCurrentFragment()

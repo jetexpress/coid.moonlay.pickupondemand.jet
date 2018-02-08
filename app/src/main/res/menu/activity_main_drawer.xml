@@ -11,10 +11,10 @@
             android:icon="@drawable/ic_nav_task"
             android:title="@string/task_list"/>
         <!-- ULETBE HIDE TUTORIAL-->
-        <!--<item-->
-            <!--android:id="@+id/nav_help"-->
-            <!--android:icon="@drawable/ic_nav_help"-->
-            <!--android:title="@string/help"/>-->
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_nav_help"
+            android:title="@string/help"/>
         <!-- ULETBE HIDE TUTORIAL-->
 
         <!--<item-->
