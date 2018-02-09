@@ -20,7 +20,8 @@ public class TutorialActivity extends AppIntro2
         addSlide(PickupTutorialSlideFragment.newInstance(R.layout.fragment_pickup_tutorial_slide_01, R.color.colorPrimary, R.id.rl_container));
         addSlide(PickupTutorialSlideFragment.newInstance(R.layout.fragment_pickup_tutorial_slide_02, R.color.colorInfo, R.id.rl_container));
         addSlide(PickupTutorialSlideFragment.newInstance(R.layout.fragment_pickup_tutorial_slide_03, R.color.colorTextDisable, R.id.rl_container));
-        addSlide(PickupTutorialSlideFragment.newInstance(R.layout.fragment_pickup_tutorial_slide_04, R.color.colorSuccess, R.id.rl_container));
+        addSlide(PickupTutorialSlideFragment.newInstance(R.layout.fragment_pickup_tutorial_slide_04, R.color.colorInfo, R.id.rl_container));
+        addSlide(PickupTutorialSlideFragment.newInstance(R.layout.fragment_pickup_tutorial_slide_05, R.color.colorSuccess, R.id.rl_container));
         setColorTransitionsEnabled(true);
         updateFirstTimeOpenedState();
     }

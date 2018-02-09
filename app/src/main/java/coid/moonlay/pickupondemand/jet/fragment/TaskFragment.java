@@ -3,15 +3,22 @@ package coid.moonlay.pickupondemand.jet.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -42,8 +49,10 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
     private SwipeRefreshLayout swipe_refresh_layout_task_ongoing, swipe_refresh_layout_task_history;
     private ProgressBar progress_bar_task_ongoing, progress_bar_task_history, progress_bar_paging_task_ongoing, progress_bar_paging_task_history;
     private ListView list_view_task_ongoing, list_view_task_history;
+    private CardView card_view_search_ongoing_container, card_view_search_history_container;
     private LinearLayout ll_task_ongoing_tab_container, ll_task_history_tab_container;
     private RelativeLayout rl_task_ongoing_content_container, rl_task_history_content_container;
+    private EditText et_filter_ongoing, et_filter_history;
     private TextView tv_tab_task_ongoing, tv_tab_task_history, tv_task_ongoing_rto, tv_task_history_rto;
     private Button btn_task_ongoing_retry, btn_task_history_retry;
     private View tab_task_ongoing_indicator, tab_task_history_indicator;
@@ -56,6 +65,12 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
 
     private TaskAdapter mTaskOngoingAdapter;
     private TaskAdapter mTaskHistoryAdapter;
+
+    private Handler mOngoingHandler;
+    private String mOngoingFilterKeyword;
+    private Handler mHistoryHandler;
+    private String mHistoryFilterKeyword;
+    private Long mFilterDelay = 2000L;
 
     public TaskFragment()
     {
@@ -70,8 +85,10 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
         mIsOnTabClicked = false;
         mTaskOngoingAdapter = new TaskAdapter(mContext, new ArrayList<Task>(), false);
         mTaskHistoryAdapter = new TaskAdapter(mContext, new ArrayList<Task>(), true);
-        mTaskOngoingRequest = new TaskOngoingRequest(mContext);
-        mTaskHistoryRequest = new TaskHistoryRequest(mContext);
+        mOngoingFilterKeyword = "";
+        mHistoryFilterKeyword = "";
+        mTaskOngoingRequest = new TaskOngoingRequest(mContext, mOngoingFilterKeyword);
+        mTaskHistoryRequest = new TaskHistoryRequest(mContext, mHistoryFilterKeyword);
     }
 
     @Override
@@ -103,6 +120,22 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
     }
 
     @Override
+    public void onDestroy()
+    {
+        if (mTaskOngoingRequest != null)
+        {
+            mTaskOngoingRequest.clear();
+            mTaskOngoingRequest = null;
+        }
+        if (mTaskHistoryRequest != null)
+        {
+            mTaskHistoryRequest.clear();
+            mTaskHistoryRequest = null;
+        }
+        super.onDestroy();
+    }
+
+    @Override
     public void onStatusChanged(Task task)
     {
         mTaskOngoingAdapter.notifyDataSetChanged();
@@ -130,6 +163,10 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
         tv_tab_task_history = (TextView) findViewById(R.id.tv_tab_task_history);
         tab_task_ongoing_indicator = findViewById(R.id.tab_task_ongoing_indicator);
         tab_task_history_indicator = findViewById(R.id.tab_task_history_indicator);
+        card_view_search_ongoing_container = (CardView) findViewById(R.id.card_view_search_ongoing_container);
+        card_view_search_history_container = (CardView) findViewById(R.id.card_view_search_history_container);
+        et_filter_ongoing = (EditText) findViewById(R.id.et_filter_ongoing);
+        et_filter_history = (EditText) findViewById(R.id.et_filter_history);
 
         list_view_task_ongoing.setAdapter(mTaskOngoingAdapter);
         list_view_task_history.setAdapter(mTaskHistoryAdapter);
@@ -185,12 +222,54 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
             @Override
             public void onSecondaryLayoutClicked(Integer position){ showToast(Utility.Message.get(R.string.dev_not_implemented));}
         });
+        et_filter_ongoing.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+                if (mOngoingHandler != null)
+                    mOngoingHandler.removeCallbacks(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                mOngoingFilterKeyword = s.toString();
+                if (mTaskOngoingRequest != null && mTaskOngoingRequest.isExecuting())
+                    mTaskOngoingRequest.cancel();
+
+                filterOngoingTask();
+            }
+        });
+        et_filter_history.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+                if (mHistoryHandler != null)
+                    mHistoryHandler.removeCallbacks(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                mHistoryFilterKeyword = s.toString();
+                if (mTaskHistoryRequest != null && mTaskHistoryRequest.isExecuting())
+                    mTaskHistoryRequest.cancel();
+
+                filterHistoryTask();
+            }
+        });
         swipe_refresh_layout_task_ongoing.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
         {
             @Override
             public void onRefresh()
             {
-                mTaskOngoingRequest = new TaskOngoingRequest(mContext);
+                mTaskOngoingRequest = new TaskOngoingRequest(mContext, mOngoingFilterKeyword);
                 mTaskOngoingRequest.executeAsync();
             }
         });
@@ -199,7 +278,7 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
             @Override
             public void onRefresh()
             {
-                mTaskHistoryRequest = new TaskHistoryRequest(mContext);
+                mTaskHistoryRequest = new TaskHistoryRequest(mContext, mHistoryFilterKeyword);
                 mTaskHistoryRequest.executeAsync();
             }
         });
@@ -295,6 +374,42 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
             mTaskHistoryRequest.executeAsync();
     }
 
+    private void filterOngoingTask()
+    {
+        if (mOngoingHandler == null)
+            mOngoingHandler = new Handler(Looper.getMainLooper());
+
+        mOngoingHandler.postDelayed(filterOngoingTaskRunnable, mFilterDelay);
+    }
+
+    private Runnable filterOngoingTaskRunnable = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            mTaskOngoingRequest = new TaskOngoingRequest(mContext, mOngoingFilterKeyword);
+            mTaskOngoingRequest.executeAsync();
+        }
+    };
+
+    private void filterHistoryTask()
+    {
+        if (mHistoryHandler == null)
+            mHistoryHandler = new Handler(Looper.getMainLooper());
+
+        mHistoryHandler.postDelayed(filterHistoryRunnable, mFilterDelay);
+    }
+
+    private Runnable filterHistoryRunnable = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            mTaskHistoryRequest = new TaskHistoryRequest(mContext, mHistoryFilterKeyword);
+            mTaskHistoryRequest.executeAsync();
+        }
+    };
+
     private void cancelTrip(final Task task)
     {
         String title = Utility.Message.get(R.string.pickup_cancel_trip_title);
@@ -359,6 +474,8 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
         rl_task_history_content_container.setVisibility(View.GONE);
         swipe_refresh_layout_task_ongoing.setVisibility(View.VISIBLE);
         swipe_refresh_layout_task_history.setVisibility(View.GONE);
+        card_view_search_ongoing_container.setVisibility(View.VISIBLE);
+        card_view_search_history_container.setVisibility(View.GONE);
 
         progress_bar_task_ongoing.setVisibility(View.GONE);
         progress_bar_paging_task_ongoing.setVisibility(View.GONE);
@@ -394,6 +511,8 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
         rl_task_history_content_container.setVisibility(View.VISIBLE);
         swipe_refresh_layout_task_ongoing.setVisibility(View.GONE);
         swipe_refresh_layout_task_history.setVisibility(View.VISIBLE);
+        card_view_search_ongoing_container.setVisibility(View.GONE);
+        card_view_search_history_container.setVisibility(View.VISIBLE);
 
         progress_bar_task_history.setVisibility(View.GONE);
         progress_bar_paging_task_history.setVisibility(View.GONE);
@@ -466,12 +585,12 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
 
     public void updateTaskOngoing(List<Task> taskList, Boolean isReplace)
     {
-        mTaskOngoingAdapter.update(taskList, isReplace);
+        mTaskOngoingAdapter.updateFilteredList(mOngoingFilterKeyword, taskList, isReplace);
     }
 
     public void updateTaskHistory(List<Task> taskList, Boolean isReplace)
     {
-        mTaskHistoryAdapter.update(taskList, isReplace);
+        mTaskHistoryAdapter.updateFilteredList(mHistoryFilterKeyword, taskList, isReplace);
     }
 
     public Boolean isTabTaskOngoing()

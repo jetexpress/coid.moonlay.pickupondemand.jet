@@ -33,10 +33,10 @@ import retrofit2.http.Query;
 public interface IResourceService
 {
     @GET("v2/courier/tasks/ongoing")
-    Call<QueryResult<Task>> getOngoingTaskList(@Query("size") Long size, @Query("page") Long page);
+    Call<QueryResult<Task>> getOngoingTaskList(@Query("size") Long size, @Query("page") Long page, @Query("keyword") String keyword);
 
     @GET("v2/courier/tasks/history")
-    Call<QueryResult<Task>> getHistoryTaskList(@Query("size") Long size, @Query("page") Long page);
+    Call<QueryResult<Task>> getHistoryTaskList(@Query("size") Long size, @Query("page") Long page, @Query("keyword") String keyword);
 
     @GET("v2/delivery-orders/waybills/ongoing")
     Call<QueryResult<Delivery>> getOngoingWaybills(@Query("size") Long size, @Query("page") Long page);
