@@ -2,6 +2,7 @@ package coid.moonlay.pickupondemand.jet.network;
 
 import java.util.List;
 
+import coid.moonlay.pickupondemand.jet.model.SuccessPRS;
 import coid.moonlay.pickupondemand.jet.model.UpdateInfo;
 import coid.moonlay.pickupondemand.jet.model.Config;
 import coid.moonlay.pickupondemand.jet.model.CourierAvailability;
@@ -68,6 +69,8 @@ public interface IResourceService
     @POST("v2/delivery-orders/{drsCode}/proof-of-delivery/{awbNumber}")
     Call<Void> submitFailedDelivery(@Path("drsCode") String drsCode, @Path("awbNumber") String awbNumber, @Body FailedDelivery failedDelivery);
 
+    @POST("v2/pickup-requests/quick/{crsItemId}")
+    Call<Void> submitSuccessPrs(@Path("crsItemId") String crsItemId, @Body SuccessPRS successPRS);
     /** **/
 
     @GET("v2/pickup-requests/{code}")

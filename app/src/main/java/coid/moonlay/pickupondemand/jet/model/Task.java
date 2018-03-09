@@ -6,7 +6,9 @@ import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.UrlTileProvider;
 import com.google.gson.annotations.SerializedName;
+import com.journeyapps.barcodescanner.Util;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -28,6 +30,8 @@ public class Task implements Parcelable
     public static String VEHICLE_CAR = "CAR";
 
     private String code;
+    private String crsItemId;
+    private String jetIdCode;
     private String drsCode;
     private String name;
     private String phone;
@@ -36,6 +40,8 @@ public class Task implements Parcelable
     private String status;
     private String courierId;
     private String date;
+    private String scheduleDate;
+    private String type;
     private int index;
     @SerializedName("paymentMethodCode")
     private String paymentMethod;
@@ -53,14 +59,101 @@ public class Task implements Parcelable
 
     public String getCode()
     {
-        return code;
+        if (isPickup())
+        {
+            return code;
+        }
+        else if(isPickupRunSheet()) {
+            return "";
+        }
+        else
+        {
+            return code;
+        }
     }
 
     public String getDrsCode()
     {
         if (isPickup())
+        {
             return "";
-        return drsCode;
+        }
+        else if(isPickupRunSheet()) {
+            return "";
+        }
+        else
+        {
+            return drsCode;
+        }
+    }
+
+    public String getPrsCode() {
+        if (isPickup())
+        {
+            return "";
+        }
+        else if(isPickupRunSheet()) {
+            return code;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+
+    public void setPrsCode(String code) {
+        this.code = code;
+    }
+
+
+    public String getCrsItemId() {
+        return crsItemId;
+    }
+
+    public void setCrsItemId(String crsItemId) {
+        this.crsItemId = crsItemId;
+    }
+
+    public String getJetIdCode(){
+        return jetIdCode;
+    }
+
+    public void setJetIdCode(String jetIdCode){
+        this.jetIdCode = jetIdCode;
+    }
+
+    public String getScheduleDate() {
+        if(scheduleDate.contains("Monday")) {
+            return scheduleDate.replace("Monday", "Senin");
+        }if(scheduleDate.contains("Tuesday")) {
+            return scheduleDate.replace("Tuesday", "Selasa");
+        }if(scheduleDate.contains("Wednesday")) {
+            return scheduleDate.replace("Wednesday", "Rabu");
+        }if(scheduleDate.contains("Thursday")) {
+            return scheduleDate.replace("Thursday", "Kamis");
+        }if(scheduleDate.contains("Friday")) {
+            return scheduleDate.replace("Friday", "Jumat");
+        }if(scheduleDate.contains("Saturday")) {
+            return scheduleDate.replace("Saturday", "Sabtu");
+        }if(scheduleDate.contains("Sunday")) {
+            return scheduleDate.replace("Sunday", "Minggu");
+        }
+        else
+            return scheduleDate;
+
+    }
+
+    public void setScheduleDate(String scheduleDate) {
+        this.scheduleDate = scheduleDate;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName()
@@ -107,6 +200,7 @@ public class Task implements Parcelable
     {
         return Utility.DateFormat.getDateStringFromMillis(getDateInMillis(), "EEEE, dd MMMM yyyy - HH.mm", false);
     }
+
 
     public int getIndex()
     {
@@ -199,10 +293,29 @@ public class Task implements Parcelable
         return getCountDownStartTimeInMillis() <= 0;
     }
 
+    //TODO: Start changes add type for multiple option such as PU/ DRS/ PRS
     public Boolean isPickup()
     {
-        return drsCode == null || drsCode.isEmpty();
+       return (code != null ) && (type.equals("Pickup")) ;
     }
+
+    public Boolean isPickupRunSheet(){
+        return (code != null ) && (type.equals("Outlet") || type.equals("Jetid"));
+    }
+
+    public Boolean isDRS()
+    {
+        return (drsCode != null ) && (type.equals("DRS"));
+    }
+    public Boolean isPRSOutlet()
+    {
+        return type.equals("Outlet");
+    }
+    public Boolean isPRSJetid(){
+        return type.equals("Jetid");
+    }
+
+    //End
 
     public Boolean isAssigned()
     {
@@ -238,8 +351,10 @@ public class Task implements Parcelable
     {
         if (isPickup())
             return Utility.Message.get(R.string.task_type_pickup);
-        else
+        else if(isDRS())
             return Utility.Message.get(R.string.task_type_delivery);
+        else
+            return Utility.Message.get(R.string.task_type_pickupRunSheet);
     }
 
     public String getTaskTypeLabel()
@@ -255,8 +370,10 @@ public class Task implements Parcelable
     {
         if (isPickup())
             return ContextCompat.getDrawable(JetApplication.getInstance(), R.drawable.ic_pickup_white);
-        else
+        else if(isDRS())
             return ContextCompat.getDrawable(JetApplication.getInstance(), R.drawable.ic_delivery_white);
+        else
+            return ContextCompat.getDrawable(JetApplication.getInstance(), R.drawable.ic_prs_icon);
     }
 
     public Double getDeliveryFee()
@@ -388,6 +505,7 @@ public class Task implements Parcelable
         Task task = new Task();
         task.setCode(notificationPayload.getCode());
         task.setDrsCode(notificationPayload.isPickup() ? "" : notificationPayload.getCode());
+        task.setPrsCode(notificationPayload.isPickup() ? "" : notificationPayload.getCode());
         task.setName(notificationPayload.getName());
         task.setPhone("");
         task.setEmail("");
@@ -395,6 +513,8 @@ public class Task implements Parcelable
         task.setStatus(notificationPayload.getStatus());
         task.setCourierId("");
         task.setDate("");
+        task.setScheduleDate(notificationPayload.getScheduleDate());
+        task.setType(notificationPayload.getType());
         task.setIndex(0);
         task.setPaymentMethod(notificationPayload.getPaymentMethod());
         task.setTotalFee(0D);
@@ -410,6 +530,7 @@ public class Task implements Parcelable
         Task dummyPickupTask = new Task();
         dummyPickupTask.setCode("dummyPickupCode" + numberString);
         dummyPickupTask.setDrsCode("");
+        dummyPickupTask.setPrsCode("");
         dummyPickupTask.setName("dummyName" + numberString);
         dummyPickupTask.setPhone("");
         dummyPickupTask.setEmail("dummyEmail" + numberString + "@email.com");
@@ -443,6 +564,8 @@ public class Task implements Parcelable
         dest.writeString(status);
         dest.writeString(courierId);
         dest.writeString(date);
+        dest.writeString(scheduleDate);
+        dest.writeString(type);
         dest.writeInt(index);
         dest.writeString(paymentMethod);
         dest.writeDouble(totalFee);
@@ -462,6 +585,8 @@ public class Task implements Parcelable
         status = in.readString();
         courierId = in.readString();
         date = in.readString();
+        scheduleDate = in.readString();
+        type = in.readString();
         index = in.readInt();
         paymentMethod = in.readString();
         totalFee = in.readDouble();

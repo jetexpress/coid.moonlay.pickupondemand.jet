@@ -64,6 +64,7 @@
             android:padding="@dimen/medium"
             android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/ll_waybill_code_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -110,6 +111,139 @@
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="@dimen/text_size_medium"
                     android:text="2033478695"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_crsItem_code_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="CRS ITEM NO - "/>
+                <TextView
+                    android:id="@+id/tv_crsItem_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/extra_small"
+                    android:layout_marginStart="@dimen/extra_small"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="2"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_jetidcode_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="JET ID  - "/>
+                <TextView
+                    android:id="@+id/tv_jetidcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/extra_small"
+                    android:layout_marginStart="@dimen/extra_small"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="asodjasi-asdasj"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_prs_code_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="PRS NO - "/>
+                <TextView
+                    android:id="@+id/tv_prs_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/extra_small"
+                    android:layout_marginStart="@dimen/extra_small"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="2033478695"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_type_outlet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="OUTLET - "/>
+                <TextView
+                    android:id="@+id/tv_type_outlet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/extra_small"
+                    android:layout_marginStart="@dimen/extra_small"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="JKB001"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_type_jetid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="JET ID - "/>
+                <TextView
+                    android:id="@+id/tv_type_jetid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/extra_small"
+                    android:layout_marginStart="@dimen/extra_small"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="TRAVELMADEZY"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_address"
@@ -172,7 +306,15 @@
                 android:layout_marginTop="@dimen/extra_small"
                 android:maxLines="1"
                 android:textColor="@color/colorInfo"
-                android:text="Alamat tidak lengkap / salah"/>
+                android:text="Alamat tidak lengkap / salah" />
+            <TextView
+                android:id="@+id/schedule_prs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_marginTop="@dimen/extra_small"
+                android:textColor="@color/colorInfo"
+                android:text="Monday - 18.00"/>
         </LinearLayout>
     </LinearLayout>
 

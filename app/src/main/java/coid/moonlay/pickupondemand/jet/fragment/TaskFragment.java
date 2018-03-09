@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -188,8 +189,14 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
                         pickupDetailFragment.setTargetFragment(mFragment, 0);
                         getNavigator().showFragment(pickupDetailFragment);
                     }
-                    else
+                    else if(task.isDRS())
                         getNavigator().showFragment(DeliveryDetailFragment.newInstance(task));
+                    else if(task.isPRSOutlet()){
+                        getNavigator().showFragment(PrsOutletDetailFragment.newInstance(task));
+                    }else{
+                        getNavigator().showFragment(PrsJetidDetailFragment.newInstance(task));
+                    }
+
                 }
             }
             @Override
@@ -215,8 +222,13 @@ public class TaskFragment extends BaseMainFragment implements PickupDetailFragme
                 {
                     if (task.isPickup())
                         getNavigator().showFragment(PickupHistoryDetailFragment.newInstance(task));
-                    else
+                    else if (task.isDRS())
                         getNavigator().showFragment(DeliveryHistoryDetailFragment.newInstance(task));
+                    else if(task.isPRSOutlet()){
+                        getNavigator().showFragment(PrsHistoryOutletDetailFragment.newInstance(task));
+                    }else{
+                        getNavigator().showFragment(PrsHistoryJetidDetailFragment.newInstance(task));
+                    }
                 }
             }
             @Override

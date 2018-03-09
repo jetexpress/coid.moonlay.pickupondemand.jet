@@ -7,6 +7,7 @@ public class NotificationPayload
 {
     public static final String TYPE_PICKUP = "Pickup Request";
     public static final String ROLE_COURIER = "Courier";
+    public static final String TYPE_PRS = "Pickup Runsheet";
 
     private String status;
     private String address;
@@ -19,6 +20,7 @@ public class NotificationPayload
     private String role;
     private String code;
     private String type;
+    private String scheduleDate;
     private String paymentMethod;
 
     public String getStatus()
@@ -114,6 +116,14 @@ public class NotificationPayload
     public String getType()
     {
         return type;
+    }
+
+    public String getScheduleDate() {
+        return scheduleDate;
+    }
+
+    public void setScheduleDate(String scheduleDate) {
+        this.scheduleDate = scheduleDate;
     }
 
     public void setType(String type)

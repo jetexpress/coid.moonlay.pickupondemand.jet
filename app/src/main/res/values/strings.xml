@@ -91,6 +91,7 @@
     <string name="task_history">History</string>
     <string name="task_type_pickup">Pickup</string>
     <string name="task_type_delivery">Delivery</string>
+    <string name="task_type_pickupRunSheet">Pickup Runsheet</string>
     <string name="task_type_label_pickup_number">PU#</string>
     <string name="task_type_label_awb_number">WB#</string>
     <string name="task_failed_delivery">Gagal Kirim</string>
@@ -216,6 +217,16 @@
     <string name="proof_of_delivery_pick_photo">Pilih Gambar</string>
     <string name="proof_of_delivery_photo_required">Foto wajib dilampirkan</string>
     <string name="proof_of_delivery_signature_required">Tanda tangan wajib dilampirkan</string>
+
+    <!-- PICKUP RUN SHEET-->
+    <string name="pickup_run_sheet">Pickup Runsheet</string>
+    <string name="pickup_run_sheet_outlet_name">Outlet</string>
+    <string name="pickup_run_sheet_jetid_name">Jetid</string>
+    <string name="pickup_run_sheet_outlet_address">Alamat</string>
+    <string name="pickup_run_sheet_outlet_total_waybill">Jumlah Waybill</string>
+    <string name="pickup_run_sheet_schedule">Jadwal Pickup</string>
+    <string name="pickup_run_sheet_total_pickup">Total Pickup</string>
+    <string name="pickup_run_sheet_pickup">Pickup</string>
 
     <!-- OUTLET LOCATION -->
     <string name="outlet_location">Lokasi Gerai</string>

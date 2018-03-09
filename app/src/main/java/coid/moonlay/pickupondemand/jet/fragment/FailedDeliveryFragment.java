@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.location.Location;
 
 import coid.moonlay.pickupondemand.jet.R;
 import coid.moonlay.pickupondemand.jet.Utility;
@@ -36,6 +37,8 @@ public class FailedDeliveryFragment extends BaseMainFragment
     private TextInputEditText et_operation_status;
     private CheckBox checkbox_retry;
     private EditText et_note;
+    private Double mLatitude;
+    private Double mLongitude;
 
     private OperationStatus mOperationStatus;
     private Task mTask;
@@ -76,6 +79,22 @@ public class FailedDeliveryFragment extends BaseMainFragment
         super.onViewCreated(view, savedInstanceState);
         setView();
         setEvent();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Location location = Utility.Location.getCurrentLocationByFused(getBaseActivity().getGoogleApiClient());
+        if (location != null)
+        {
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+        }
+        else
+        {
+            mLatitude = 0D;
+            mLongitude = 0D;
+        }
     }
 
     @Override
@@ -155,6 +174,8 @@ public class FailedDeliveryFragment extends BaseMainFragment
         failedDelivery.setNote(et_note.getText().toString().trim());
         failedDelivery.setOperationCode(mOperationStatus.getCode());
         failedDelivery.setRetry(checkbox_retry.isChecked());
+        failedDelivery.setLatitude(mLatitude);
+        failedDelivery.setLongitude(mLongitude);
 
         DeliveryFailedRequest deliveryFailedRequest = new DeliveryFailedRequest(mContext, mTask.getDrsCode(), mTask.getCode(), failedDelivery);
         deliveryFailedRequest.executeAsync();
