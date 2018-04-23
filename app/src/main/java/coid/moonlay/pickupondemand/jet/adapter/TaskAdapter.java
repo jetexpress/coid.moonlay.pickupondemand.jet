@@ -37,6 +37,7 @@ public class TaskAdapter extends ArrayAdapter<Task>
     private String mOpenItemId;
     private boolean mIsSwipeRevealDisabled = false;
     private String mFilterKeyword;
+    private String scheduleFormatted;
 
     public TaskAdapter(Context context, List<Task> taskList, boolean isSwipeRevealDisabled)
     {
@@ -101,10 +102,23 @@ public class TaskAdapter extends ArrayAdapter<Task>
         holder.img_task_type.setImageDrawable(task.getTaskTypeDrawable());
         holder.tv_task_type_label.setText(task.getTaskTypeLabel());
         holder.tv_drs_code.setText(task.getDrsCode());
+        holder.tv_prs_code.setText(task.getPrsCode());
+        if(task.getScheduleDate().length()> 10){
+            scheduleFormatted = task.getScheduleDate().substring(0, task.getScheduleDate().length()-8);
+        }
+        else {
+            scheduleFormatted = "";
+        }
+        holder.tv_time.setText(scheduleFormatted);
+        holder.tv_type_jetid.setText(task.getName());
+        holder.tv_type_outlet.setText(task.getName());
         holder.tv_address.setText(task.getAddress());
         holder.tv_payment_method.setText(task.getPaymentMethod());
         holder.tv_payment_fee.setText(task.getCODFeeString());
         holder.tv_status.setText(task.getStatus());
+        holder.tv_crsItem_code.setText(task.getCrsItemId());
+        holder.tv_jetIdCode.setText(task.getJetIdCode());
+
     }
 
     private void setState(ViewHolder holder, Task task)
@@ -117,28 +131,63 @@ public class TaskAdapter extends ArrayAdapter<Task>
                 holder.swipe_reveal_layout_task_item_container.setLockDrag(true);
 
             holder.ll_drs_code_container.setVisibility(View.GONE);
+            holder.ll_prs_code_container.setVisibility(View.GONE);
+            holder.ll_waybill_code_container.setVisibility(View.VISIBLE);
+            holder.tv_time.setVisibility(View.GONE);
+            holder.tv_address.setVisibility(View.GONE);
             holder.ll_payment_method_container.setVisibility(View.GONE);
             holder.tv_status.setVisibility(View.VISIBLE);
+            holder.ll_type_jetid.setVisibility(View.GONE);
+            holder.ll_type_outlet.setVisibility(View.GONE);
 
             if (task.isTripStarted())
                 holder.tv_reject_task.setText(Utility.Message.get(R.string.task_cancel));
             else
                 holder.tv_reject_task.setText(Utility.Message.get(R.string.pickup_reject));
         }
-        else
+        else if (task.isDRS())
         {
             holder.swipe_reveal_layout_task_item_container.setLockDrag(true);
+            holder.ll_waybill_code_container.setVisibility(View.VISIBLE);
             holder.ll_drs_code_container.setVisibility(View.VISIBLE);
+            holder.tv_address.setVisibility(View.GONE);
+            holder.ll_prs_code_container.setVisibility(View.GONE);
+            holder.tv_time.setVisibility(View.GONE);
             holder.ll_payment_method_container.setVisibility(View.VISIBLE);
+            holder.ll_type_jetid.setVisibility(View.GONE);
+            holder.ll_type_outlet.setVisibility(View.GONE);
             holder.tv_status.setVisibility(View.GONE);
             if (task.isCOD())
                 holder.ll_payment_fee_container.setVisibility(View.VISIBLE);
             else
                 holder.ll_payment_fee_container.setVisibility(View.GONE);
         }
+        else
+        {
+
+            if(task.getType().equals("Outlet")){
+                holder.ll_type_outlet.setVisibility(View.VISIBLE);
+                holder.ll_type_jetid.setVisibility(View.GONE);
+            }
+            if(task.getType().equals("Jetid")){
+                holder.ll_type_jetid.setVisibility(View.VISIBLE);
+                holder.ll_type_outlet.setVisibility(View.GONE);
+            }
+
+            holder.swipe_reveal_layout_task_item_container.setLockDrag(true);
+            holder.tv_status.setVisibility(View.GONE);
+            holder.tv_reject_task.setVisibility(View.GONE);
+            holder.ll_drs_code_container.setVisibility(View.GONE);
+            holder.ll_waybill_code_container.setVisibility(View.GONE);
+            holder.ll_payment_fee_container.setVisibility(View.GONE);
+            holder.ll_prs_code_container.setVisibility(View.VISIBLE);
+            holder.tv_time.setVisibility(View.VISIBLE);
+            holder.tv_address.setVisibility(View.GONE);
+        }
 
         if (mIsSwipeRevealDisabled)
             holder.swipe_reveal_layout_task_item_container.setLockDrag(true);
+
     }
 
     private void setEvent(final ViewHolder holder, final Task task)
@@ -234,9 +283,30 @@ public class TaskAdapter extends ArrayAdapter<Task>
     {
         SwipeRevealLayout swipe_reveal_layout_task_item_container;
         FrameLayout fl_reject_task_item_container;
-        LinearLayout ll_main_task_item_container, ll_drs_code_container, ll_payment_method_container, ll_payment_fee_container;
+        LinearLayout ll_main_task_item_container,
+                ll_waybill_code_container,
+                ll_drs_code_container,
+                ll_prs_code_container,
+                ll_payment_method_container,
+                ll_type_outlet,
+                ll_type_jetid,
+                ll_payment_fee_container,
+                ll_crsItem_code_container;
         ImageView img_task_type;
-        TextView tv_reject_task, tv_task_type_label, tv_task_code, tv_drs_code, tv_address, tv_payment_method, tv_payment_fee, tv_time, tv_status;
+        TextView tv_reject_task,
+                tv_task_type_label,
+                tv_task_code,
+                tv_drs_code,
+                tv_prs_code,
+                tv_address,
+                tv_payment_method,
+                tv_payment_fee,
+                tv_time,
+                tv_type_outlet,
+                tv_type_jetid,
+                tv_status,
+                tv_crsItem_code,
+                tv_jetIdCode;
         Integer position;
 
         private ViewHolder()
@@ -253,14 +323,25 @@ public class TaskAdapter extends ArrayAdapter<Task>
             img_task_type = (ImageView) convertView.findViewById(R.id.img_task_type);
             tv_task_type_label = (TextView) convertView.findViewById(R.id.tv_task_type_label);
             tv_task_code = (TextView) convertView.findViewById(R.id.tv_task_code);
+            ll_waybill_code_container = (LinearLayout) convertView.findViewById(R.id.ll_waybill_code_container);
             ll_drs_code_container = (LinearLayout) convertView.findViewById(R.id.ll_drs_code_container);
+            ll_prs_code_container = (LinearLayout)convertView.findViewById(R.id.ll_prs_code_container);
+            ll_type_jetid = (LinearLayout)convertView.findViewById(R.id.ll_type_jetid);
+            ll_type_outlet = (LinearLayout)convertView.findViewById(R.id.ll_type_outlet);
+            ll_crsItem_code_container = (LinearLayout)convertView.findViewById(R.id.ll_crsItem_code_container);
             tv_drs_code = (TextView) convertView.findViewById(R.id.tv_drs_code);
+            tv_prs_code = (TextView) convertView.findViewById(R.id.tv_prs_code);
             tv_address = (TextView) convertView.findViewById(R.id.tv_address);
             tv_payment_method = (TextView) convertView.findViewById(R.id.tv_payment_method);
             tv_payment_fee = (TextView) convertView.findViewById(R.id.tv_payment_fee);
+            tv_type_outlet = (TextView)convertView.findViewById(R.id.tv_type_outlet);
+            tv_type_jetid = (TextView) convertView.findViewById(R.id.tv_type_jetid);
+            tv_crsItem_code = (TextView)convertView.findViewById(R.id.tv_crsItem_code);
+            tv_jetIdCode = (TextView) convertView.findViewById(R.id.tv_jetidcode);
             ll_payment_method_container = (LinearLayout) convertView.findViewById(R.id.ll_payment_method_container);
             ll_payment_fee_container = (LinearLayout) convertView.findViewById(R.id.ll_payment_fee_container);
             tv_status = (TextView) convertView.findViewById(R.id.tv_status);
+            tv_time = convertView.findViewById(R.id.schedule_prs);
 
             ll_main_task_item_container.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
             {

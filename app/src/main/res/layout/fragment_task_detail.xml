@@ -14,7 +14,10 @@
     <RelativeLayout
         android:id="@+id/rl_content_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/ll_bottom_container"
@@ -177,6 +180,32 @@
                     android:textSize="@dimen/text_size_medium"
                     android:text="@string/delivery_success"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_delivery_status_button_container_prs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <coid.moonlay.pickupondemand.jet.custom.CenteredIconButton
+                    android:id="@+id/btn_prsjetid_pickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/small"
+                    android:layout_marginRight="@dimen/medium"
+                    android:layout_marginEnd="@dimen/medium"
+                    android:layout_marginBottom="@dimen/small"
+                    android:layout_marginLeft="@dimen/extra_small"
+                    android:layout_marginStart="@dimen/extra_small"
+                    android:background="@drawable/custom_bg_rounded_square_red_fill"
+                    android:drawableLeft="@drawable/ic_thumbs_up"
+                    android:drawableStart="@drawable/ic_thumbs_up"
+                    android:drawablePadding="@dimen/small"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="@string/pickup_run_sheet_pickup"/>
+            </LinearLayout>
         </LinearLayout>
 
         <FrameLayout
@@ -241,95 +270,131 @@
                     android:layout_height="0.5dp"
                     android:background="@color/colorTextSecondary"/>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorTextSecondary"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/medium"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/medium">
+
                     <TextView
                         android:id="@+id/tv_label_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorTextSecondary"
-                        android:text="Nama Pemesan"/>
+                        android:text="Nama Pemesan"
+                        android:textColor="@color/colorTextSecondary" />
+
                     <TextView
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/extra_small"
+                        android:text="Patricia Aviani"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="@dimen/text_size_medium_large"
-                        android:text="Patricia Aviani"/>
+                        android:textSize="@dimen/text_size_medium_large" />
+
                     <TextView
                         android:id="@+id/tv_label_pic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
-                        android:textColor="@color/colorTextSecondary"
                         android:text="PIC"
-                        android:visibility="gone"/>
+                        android:textColor="@color/colorTextSecondary"
+                        android:visibility="gone" />
+
                     <TextView
                         android:id="@+id/tv_pic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/extra_small"
+                        android:text="Patricia Aviani"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="@dimen/text_size_medium_large"
-                        android:text="Patricia Aviani"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
+
                     <TextView
                         android:id="@+id/tv_label_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
-                        android:textColor="@color/colorTextSecondary"
-                        android:text="Alamat Pemesan"/>
+                        android:text="Alamat Pemesan"
+                        android:textColor="@color/colorTextSecondary" />
+
                     <TextView
                         android:id="@+id/tv_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/extra_small"
+                        android:text="Equity Tower 25TH floor, SCBD lot 9, \nJl. Jend. Sudirman kav.52 - 53"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="@dimen/text_size_medium_large"
-                        android:text="Equity Tower 25TH floor, SCBD lot 9, \nJl. Jend. Sudirman kav.52 - 53"/>
+                        android:textSize="@dimen/text_size_medium_large" />
+
                     <TextView
                         android:id="@+id/tv_label_address_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
-                        android:textColor="@color/colorTextSecondary"
-                        android:text="Detail Alamat Pemesan"/>
+                        android:text="Detail Alamat Pemesan"
+                        android:textColor="@color/colorTextSecondary" />
+
                     <TextView
                         android:id="@+id/tv_address_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/extra_small"
+                        android:text="Pintu Lobby West"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="@dimen/text_size_medium_large"
-                        android:text="Pintu Lobby West"/>
+                        android:textSize="@dimen/text_size_medium_large" />
+
                     <TextView
                         android:id="@+id/tv_label_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
-                        android:textColor="@color/colorTextSecondary"
-                        android:text="Telepon Pemesan"/>
+                        android:text="Telepon Pemesan"
+                        android:textColor="@color/colorTextSecondary" />
+
                     <TextView
                         android:id="@+id/tv_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/extra_small"
+                        android:text="+62 819 1982 9879"
                         android:textColor="@color/colorTextPrimary"
+                        android:textSize="@dimen/text_size_medium_large" />
+
+                    <TextView
+                        android:id="@+id/tv_label_schedule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:text="Jadwal Pickup"
+                        android:textColor="@color/colorTextSecondary"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_schedule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/extra_small"
+                        android:textColor="@color/colorTextPrimary"
+                        android:text="Senin, 23:00"
                         android:textSize="@dimen/text_size_medium_large"
-                        android:text="+62 819 1982 9879"/>
+                        android:visibility="gone"/>
+
                     <TextView
                         android:id="@+id/tv_weight_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
-                        android:textColor="@color/colorTextSecondary"
                         android:text="Berat Barang"
-                        android:visibility="gone"/>
+                        android:textColor="@color/colorTextSecondary"
+                        android:visibility="gone" />
+
                     <TextView
                         android:id="@+id/tv_weight"
                         android:layout_width="wrap_content"
@@ -337,12 +402,9 @@
                         android:layout_marginTop="@dimen/extra_small"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="@dimen/text_size_medium_large"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/colorTextSecondary"/>
+
                 <LinearLayout
                     android:id="@+id/ll_price_detail_container"
                     android:layout_width="match_parent"
